@@ -1,0 +1,277 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  background-color: aliceblue;
+  width: 100%;
+  font-family: "Lato", sans-serif;
+}
+
+h2 {
+  font-family: "Abril Fatface", cursive;
+  font-size: 2.8rem;
+  margin: 10px 0;
+  /* font-weight: 400; */
+  font-family: "Rubik Iso", cursive;
+}
+
+#main-container {
+  background-color: aliceblue;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 100px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#search-container {
+  height: 50px;
+  position: relative;
+}
+
+#search-container input {
+  width: 100%;
+  border-radius: 10px;
+  height: 50px;
+  padding: 0 50px;
+}
+#search-container button {
+  padding: 9px 20px;
+  border-radius: 10px;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  background-color: cornflowerblue;
+}
+
+.before-search {
+  display: none;
+}
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  width: 26px;
+}
+
+#input-icon {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: cornflowerblue;
+  z-index: 1;
+}
+
+.right-info {
+  padding: 20px;
+  margin-left: 120px;
+  font-size: 1rem;
+  position: relative;
+}
+
+#github-id {
+  margin-top: 8px;
+}
+
+#joined-date {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+#bio {
+  margin-top: 10px;
+}
+
+#profile-img {
+  float: left;
+  width: 110px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+#profile-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+}
+
+.detailed-info {
+  clear: both;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.detailed-info div p {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.detailed-info div {
+  width: 30%;
+}
+
+.github-grass img {
+  width: 100%;
+}
+
+.link-info {
+  width: 100%;
+  display: flex;
+  /* 한 줄에 2개 배치 */
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.link-info span {
+  margin: 10px;
+}
+
+.location,
+.company,
+.email,
+.blog {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+#show-user-undefined {
+  color: red;
+  padding: 20px 0;
+  font-size: 1.1rem;
+}
+
+.hidden {
+  display: none !important;
+}

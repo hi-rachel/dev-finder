@@ -122,6 +122,16 @@ table {
   border-spacing: 0;
 }
 
+a,
+a::after {
+  text-decoration: none;
+  color: #6495ed;
+}
+
+a:hover {
+  opacity: 70%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -169,6 +179,28 @@ h2 {
   right: 10px;
   top: 7px;
   background-color: cornflowerblue;
+}
+
+#search-btn:hover {
+  opacity: 80%;
+}
+
+#auto-complete {
+  background-color: #6495ed;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+#auto-complete > div {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#auto-complete > div.active {
+  background: cornflowerblue;
+  position: relative;
+  color: #fff;
 }
 
 .before-search {
@@ -240,7 +272,7 @@ h2 {
   width: 30%;
 }
 
-.github-grass img {
+#github-grass img {
   width: 100%;
 }
 
@@ -259,7 +291,7 @@ h2 {
 .location,
 .company,
 .email,
-.blog {
+.website {
   width: 50%;
   display: flex;
   align-items: center;

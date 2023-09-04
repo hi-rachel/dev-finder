@@ -35,7 +35,15 @@ function dateFormat(d) {
 
 function validData(tag, data) {
   if (data != "" && data != null) {
-    tag.innerHTML = data;
+    tag.innerText = data;
+    if (tag.id == "website-info") {
+      let websiteLink = $("website-info-link");
+      websiteLink.href = data;
+    }
+    if (tag.id == "email-info") {
+      let emailLink = $("email-info-link");
+      emailLink.href = `mailto:${data}`;
+    }
   } else {
     tag.innerHTML = "-";
   }
@@ -47,6 +55,7 @@ function showUser(user, username) {
   const profileImg = $("profile-img");
   const profileName = $("profile-name");
   const githubId = $("github-id");
+  const githubIdLink = $("github-id-link");
   const joinedDate = $("joined-date");
   const bio = $("bio");
   const repos = $("repos-count");
@@ -55,13 +64,14 @@ function showUser(user, username) {
   // 하단 정보
   const location = $("location-info");
   const email = $("email-info");
-  const blog = $("blog-info");
+  const website = $("website-info");
+
   const company = $("company-info");
-  const gitGrass = $("github-grass-img");
 
   profileImg.src = user.avatar_url;
   profileName.innerText = user.name;
   githubId.innerText = "@" + user.login;
+  githubIdLink.href = `https://github.com/${username}`;
   const joinedDateFormat = dateFormat(user.created_at);
   joinedDate.innerText = "Joined " + joinedDateFormat;
   bio.innerText = user.bio;
@@ -69,12 +79,25 @@ function showUser(user, username) {
   followers.innerText = user.followers;
   following.innerText = user.following;
 
-  validData(blog, user.blog);
+  validData(website, user.blog);
   validData(location, user.location);
   validData(email, user.email);
   validData(company, user.company);
 
-  gitGrass.src = `https://ghchart.rshah.org/6495ED/${username}`;
+  addGitGrass(username);
+}
+
+function addGitGrass(username) {
+  const gitGrass = $("github-grass");
+  const gitGrassImg = $("github-grass-img");
+  gitGrass.classList.remove("hidden");
+  gitGrassImg.classList.remove("hidden");
+  gitGrassImg.src = `https://ghchart.rshah.org/6495ED/${username}`;
+}
+
+function noImage() {
+  const gitGrassImg = $("github-grass-img");
+  gitGrassImg.removeAttribute("src");
 }
 
 function userCheck(username, response) {
@@ -92,9 +115,77 @@ function userCheck(username, response) {
   }
 }
 
-inputUser.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    document.$("search-btn").click();
+const dataList = [
+  "hi-rachel",
+  "octocat",
+  "microsoft",
+  "google",
+  "apache",
+  "facebook",
+  "twitter",
+  "alibaba",
+  "vuejs",
+  "tensorflow",
+  "Tencent",
+  "freeCodeCamp",
+  "sindresorhus",
+  "kamranahmedse",
+  "donnemartin",
+  "jwasham",
+  "996icu",
+  "trekhleb",
+  "getify",
+  "vinta",
+  "justjavac",
+  "CyC2018",
+];
+
+const autoComplete = $("auto-complete");
+let nowIndex = 0;
+
+inputUser.onkeyup = (event) => {
+  const value = inputUser.value.trim();
+  // 자동완성 필터링
+  const matchDataList = value
+    ? dataList.filter((label) => label.includes(value))
+    : [];
+
+  switch (event.keyCode) {
+    // UP KEY
+    case 38:
+      nowIndex = Math.max(nowIndex - 1, 0);
+      break;
+    // DOWN KEY
+    case 40:
+      nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
+      break;
+    // ENTER KEY
+    case 13:
+      inputUser.value = matchDataList[nowIndex] || inputUser.value;
+      nowIndex = 0;
+      matchDataList.length = 0;
+      event.preventDefault();
+      $("search-btn").click();
+      break;
+    // 그외 다시 초기화
+    default:
+      nowIndex = 0;
+      break;
   }
-});
+  // 리스트 보여주기
+  showList(matchDataList, value, nowIndex);
+};
+
+const showList = (data, value, nowIndex) => {
+  const regex = new RegExp(`(${value})`, "g");
+
+  autoComplete.innerHTML = data
+    .map(
+      (label, index) => `
+      <div class='${nowIndex === index ? "active" : ""}'>
+        ${label.replace(regex, "<mark>$1</mark>")}
+      </div>
+    `
+    )
+    .join("");
+};

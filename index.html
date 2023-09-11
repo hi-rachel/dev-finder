@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/main.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
@@ -36,9 +36,7 @@
             required
             autocomplete="off"
           />
-          <button onclick="addUserInfo()" id="search-btn" type="submit">
-            Search
-          </button>
+          <button id="search-btn" type="submit">Search</button>
           <div id="auto-complete"></div>
         </div>
       </div>
@@ -60,19 +58,19 @@
         <div class="detailed-info">
           <div class="repos">
             <p>Repos</p>
-            <p id="repos-count">200</p>
+            <p id="repos-count">0</p>
           </div>
           <div class="followers">
             <p>Followers</p>
-            <p id="followers-count">1</p>
+            <p id="followers-count">0</p>
           </div>
           <div class="following">
             <p>Following</p>
-            <p id="following-count">10</p>
+            <p id="following-count">0</p>
           </div>
         </div>
         <div id="github-grass" class="hidden">
-          <img id="github-grass-img" class="hidden" onerror="noImage()" />
+          <img id="github-grass-img" class="hidden" />
         </div>
         <div class="link-info">
           <div class="location">
@@ -98,6 +96,6 @@
         </div>
       </div>
     </div>
-    <script src="js/index.js"></script>
+    <script type="module" src="./src/js/index.js"></script>
   </body>
 </html>
